@@ -13,3 +13,7 @@ system.hireEmployee(employee2);
 system.hireEmployee(employee3);
 
 console.log(system.generateReport());
+console.log(employee1);
+
+system.payEmployee(employee1);
+console.log(employee1);

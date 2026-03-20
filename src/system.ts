@@ -18,7 +18,7 @@ export class System {
     this._employees = this._employees.filter((e) => e !== employee);
   }
 
-  calculateSalaries(position: Positions) {
+  calculateSalary(position: Positions) {
     if (position === Positions.Intern) {
       return this.baseSalary * 1.2;
     } else if (position === Positions.Junior) {
@@ -32,8 +32,8 @@ export class System {
     }
   }
 
-  getEmployee(employee: Employee) {
-    const employeeSalary = this.calculateSalaries(employee.position);
+  payEmployee(employee: Employee) {
+    const employeeSalary = this.calculateSalary(employee.position);
     employee.balance = employeeSalary;
   }
 
@@ -42,7 +42,7 @@ export class System {
       return {
         name: employee.name,
         position: employee.position,
-        salary: this.calculateSalaries(employee.position),
+        salary: this.calculateSalary(employee.position),
       };
     });
 
