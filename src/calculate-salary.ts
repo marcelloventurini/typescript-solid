@@ -7,7 +7,7 @@ export class CalculateSalary {
     this.baseSalary = baseSalary;
   }
 
-  calculateSalary(position: Positions) {
+  calculate(position: Positions) {
     if (position === Positions.Intern) {
       return this.baseSalary * 1.2;
     } else if (position === Positions.Junior) {
