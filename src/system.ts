@@ -17,11 +17,6 @@ export class System {
     this._employees = this._employees.filter((e) => e !== employee);
   }
 
-  payEmployee(employee: Employee) {
-    const employeeSalary = this.calculateSalary(employee.position);
-    employee.balance = employeeSalary;
-  }
-
   generateReport() {
     let report = this._employees.map((employee) => {
       return {
