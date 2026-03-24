@@ -1,4 +1,4 @@
-import type { Positions } from "./enums/positions.enum.js";
+import { Positions } from "./enums/positions.enum.js";
 
 export class Employee {
   public readonly name: string;
