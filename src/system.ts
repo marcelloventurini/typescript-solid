@@ -1,4 +1,4 @@
-import type { Employee } from './employee.js';
+import { Employee } from './employee.js';
 
 export class System {
   private _employees: Employee[];
@@ -15,18 +15,6 @@ export class System {
 
   fireEmployee(employee: Employee) {
     this._employees = this._employees.filter((e) => e !== employee);
-  }
-
-  generateReport() {
-    let report = this._employees.map((employee) => {
-      return {
-        name: employee.name,
-        position: employee.position,
-        salary: this.calculateSalary(employee.position),
-      };
-    });
-
-    return JSON.stringify(report);
   }
 
   get employees() {
