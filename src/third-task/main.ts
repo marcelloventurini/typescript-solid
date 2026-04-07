@@ -1,22 +1,28 @@
-abstract class Member {
+interface Member {
   name: string;
   workload: number;
-  salary: number;
 
+   showWorkload(): void;
+}
+
+interface Employee extends Member {
+  salary: number;
+ 
+  calculateNetSalary(): number;
+  calculateProfitSharing(profit: number): number;
+}
+
+interface Volunteer extends Member {
+  advisor: Member;
+
+  writeReport(): void;
+}
+
+class Employee implements Member {
   constructor(name: string, workload: number, salary: number) {
     this.name = name;
     this.workload = workload;
     this.salary = salary;
-  }
-
-  abstract showWorkload(): void;
-  abstract calculateNetSalary(): number;
-  abstract calculateProfitSharing(profit: number): number;
-}
-
-class Employee extends Member {
-  constructor(name: string, workload: number, salary: number) {
-    super(name, workload, salary);
   }
 
   showWorkload(): void {
@@ -36,11 +42,10 @@ class Employee extends Member {
   }
 }
 
-class Volunteer extends Member {
-  advisor: Member;
-
+class Volunteer implements Member {
   constructor(name: string, workload: number, advisor: Member) {
-    super(name, workload, null as unknown as number);
+    this.name = name;
+    this.workload = workload;
     this.advisor = advisor;
   }
 
@@ -53,14 +58,6 @@ class Volunteer extends Member {
       `${this.name} has a workload of ${this.workload} hours per week as a volunteer.`,
     );
   }
-
-  calculateNetSalary(): number {
-    return 0;
-  }
-
-  calculateProfitSharing(profit: number): number {
-    return 0;
-  }
 }
 
 const employee = new Employee('Alice', 40, 5000);
@@ -72,6 +69,5 @@ console.log('Salário líquido:', employee.calculateNetSalary());
 console.log('Participação nos lucros:', employee.calculateProfitSharing(2.5));
 
 console.log('Nome:', volunteer.name);
-console.log('Salário bruto:', volunteer.salary);
-console.log('Salário líquido:', volunteer.calculateNetSalary());
-console.log('Participação nos lucros:', volunteer.calculateProfitSharing(2.5));
+volunteer.showWorkload();
+volunteer.writeReport();
